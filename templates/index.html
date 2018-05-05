@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+
+<body>
+<h1>Fogstream test</h1>
+<h2>Login form</h2>
+
+        <form method="post" action="/user/login/">
+            {% csrf_token %}
+            <p style="text-align: center"><strong>Login:</strong>
+                <input maxlength="35" size="40" type="text" name="login" placeholder="логин">
+            </p>
+            <p style="text-align: center"><strong>Password:</strong>
+                <input maxlength="35" size="40" type="password" name="password" placeholder="пароль">
+            </p>
+            <p style="text-align: center"><button type="submit">Send</button></p>
+        </form>
+
+    {% if errors %}
+        <p style="text-align: center; color: red;">Неверный логин или пароль</p>
+    {% endif %}
+
+    {% csrf_token %}
+    <p style="text-align: center"><a href="/user/registration/"><button type="submit" >Registration</button></a></p>
+
+
+ <div>
+    <p> &copy; &laquo; 2017 All_rights_reserved &raquo; </p>
+ </div>
+
+</body>
+</html>

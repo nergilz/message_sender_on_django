@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+</head>
+
+<body>
+<h1>Fogstream test</h1>
+<h2>Registration form</h2>
+
+ {% if not user.is_authenticated %}
+
+    <form method="post" action="/user/registration/">
+        {% csrf_token %}
+        <p style="text-align: center"><strong>Name:</strong>
+            <input maxlength="35" size="40" type="text" name="name" placeholder="логин" required>
+        </p>
+        <p style="text-align: center"><strong>Email:</strong>
+            <input maxlength="35" size="40" type="email" name="email" placeholder="email" required>
+        </p>
+        <p style="text-align: center"><strong>Password:</strong>
+            <input maxlength="35" size="40" type="password" name="password" placeholder="пароль" required>
+        </p>
+        <p style="text-align: center"><strong>Password:</strong>
+            <input maxlength="35" size="40" type="password" name="confirm_password" placeholder="повторите пароль" required>
+        </p>
+        <p style="text-align: center"><button type="submit">Send</button></p>
+    </form>
+
+    {% if reg_errors %}
+        {% for key, value in reg_errors.items %}
+            <p style="text-align: center; color: red">{{ key }} - {{ value }}</p>
+        {% endfor %}
+    {% endif %}
+
+ {% endif %}
+
+ <div>
+    <p> &copy; &laquo; 2017 All_rights_reserved &raquo; </p>
+ </div>
+
+
+</body>
+</html>

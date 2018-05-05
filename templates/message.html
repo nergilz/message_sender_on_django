@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+</head>
+<body>
+<h1>Fogstream test</h1>
+<h2>Message form</h2>
+<p style="text-align: center; color: blue;">Hello, {{ user.username }}</p>
+
+    <form method="post" action="/message/send_email/">
+   {% csrf_token %}
+        <p style="text-align: center"><strong>Email:</strong>
+            <input maxlength="35" size="40" type="text" name="email" value="" placeholder="адрес получателя" required>
+        </p>
+        <p style="text-align: center">Message:<Br>
+            <textarea name="message" cols="70" rows="7" placeholder="текст сообщения"></textarea>
+        </p>
+        <p style="text-align: center"><input type="submit" value="Отправить">
+            <input type="reset" value="Очистить">
+        </p>
+    </form>
+
+    {% if messages %}
+        <p style="text-align: center; color: green;">Cообщение отправленно!</p>
+    {% endif %}
+
+    {% csrf_token %}
+    <p style="text-align: center"><a href="/user/logout/"><button type="submit" >log_out</button></a></p>
+
+ <div>
+    <p> &copy; &laquo; 2017 All_rights_reserved &raquo; </p>
+ </div>
+
+</body>
+</html>
